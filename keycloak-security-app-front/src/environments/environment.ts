@@ -7,18 +7,19 @@ const keycloakConfig: KeycloakConfig = {
 };
 
 const keycloakInitOptions: KeycloakInitOptions = {
-  onLoad: 'check-sso', //'login-required',
+  onLoad: 'check-sso', // 'login-required',
   checkLoginIframe: false
 };
 
 const keycloakOptions: KeycloakOptions = {
   config: keycloakConfig,
   initOptions: keycloakInitOptions,
-  enableBearerInterceptor: true,
-  bearerExcludedUrls: ['/']
+  enableBearerInterceptor: true
+  // bearerExcludedUrls: ['/']
 };
 
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:8080',
   keycloak: keycloakOptions
 };

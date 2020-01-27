@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { KeycloakUtilsService } from '../services/keycloak/keycloak-utils.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  title: 'Welcome my friend, whoever you are';
+  title = 'Welcome my friend, whoever you are';
+  adminGreetings;
 
-  constructor() { }
+  constructor(private http: HttpClient, protected keycloakUtils: KeycloakUtilsService) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.keycloakUtils.logout();
+  }
+
+  logout() {
+    this.keycloakUtils.logout();
   }
 
 }

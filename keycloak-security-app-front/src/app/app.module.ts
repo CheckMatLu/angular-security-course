@@ -8,6 +8,7 @@ import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 const keycloakService = new KeycloakService();
 
@@ -21,7 +22,8 @@ const keycloakService = new KeycloakService();
   imports: [
     BrowserModule,
     AppRoutingModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    HttpClientModule
   ],
   providers: [
     {

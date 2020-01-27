@@ -17,9 +17,9 @@ public class CommonSecurityConfigurerAdapter extends AbstractHttpConfigurer<Comm
 	public void init(HttpSecurity http) throws Exception {
 
 		http
+        .cors().and()
         // disable csrf because of API mode
         .csrf().disable()
-        
         .sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
@@ -39,7 +39,8 @@ public class CommonSecurityConfigurerAdapter extends AbstractHttpConfigurer<Comm
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowCredentials(true);
         configuration.setAllowedMethods(Arrays.asList(HttpMethod.OPTIONS.name(), "GET","POST"));
         configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Authorization"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
