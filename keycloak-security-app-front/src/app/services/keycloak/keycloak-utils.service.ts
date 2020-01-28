@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { KeycloakLoginOptions } from 'keycloak-js';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +15,29 @@ export class KeycloakUtilsService {
     return this.keycloakAngular.getUsername();
   }
 
+
   login(): void {
-    if ( !this.keycloakAngular.isLoggedIn ) {
-      this.keycloakAngular.login();
-    }
+
+    // const keycloakLoginOptions: KeycloakLoginOptions = {
+    //   prompt: 'login',
+    //   redirectUri: location.origin
+    // };
+
+    this.keycloakAngular.isLoggedIn().then(
+      response => {
+        if ( !response ) {
+            this.keycloakAngular.login();
+        }
+      });
   }
 
   logout(): void {
-    if ( this.keycloakAngular.isLoggedIn ) {
-      this.keycloakAngular.logout(location.origin);
-    } else {
-      this.router.navigate(['/home']);
-    }
+
+    this.keycloakAngular.isLoggedIn().then(
+        response => {
+          if ( response ) {
+              this.keycloakAngular.logout(location.origin);
+          }
+        });
   }
 }

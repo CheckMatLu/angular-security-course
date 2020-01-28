@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    this.keycloakUtils.logout();
+    this.keycloakUtils.login();
   }
 
   logout() {
