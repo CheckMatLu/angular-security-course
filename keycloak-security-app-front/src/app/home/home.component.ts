@@ -9,12 +9,13 @@ import { KeycloakUtilsService } from '../services/keycloak/keycloak-utils.servic
 })
 export class HomeComponent implements OnInit {
 
-  title = 'Welcome my friend, whoever you are';
+  title = 'Keycloack demo test page ';
   adminGreetings;
 
   constructor(private http: HttpClient, protected keycloakUtils: KeycloakUtilsService) { }
 
   ngOnInit() {
+    this.keycloakUtils.isAuthenticated();
   }
 
   login() {
@@ -23,6 +24,10 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.keycloakUtils.logout();
+  }
+
+  isAuthenticated(): boolean {
+    return this.keycloakUtils.isLoggedIn;
   }
 
 }

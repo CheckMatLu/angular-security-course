@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER, ApplicationRef, DoBootstrap } from '@angular/core';
+import { NgModule, ApplicationRef, DoBootstrap } from '@angular/core';
+import { MatCardModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSidenavModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -9,6 +11,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const keycloakService = new KeycloakService();
 
@@ -23,7 +27,17 @@ const keycloakService = new KeycloakService();
     BrowserModule,
     AppRoutingModule,
     KeycloakAngularModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatCardModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [
     {

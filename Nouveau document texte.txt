@@ -1,0 +1,10 @@
+Front
+
+ - import keycloak-angular:
+	npm install --save keycloak-js@latest
+ - import angular material:
+	npm install --save @angular/material
+	npm install @angular/flex-layout@8.0.0-beta.27 --save
+
+
+npm install --save tslib

@@ -11,10 +11,18 @@ export class KeycloakUtilsService {
 
   constructor(protected keycloakAngular: KeycloakService, private router: Router) { }
 
+  isLoggedIn = false;
+
   public getUserName(): string {
     return this.keycloakAngular.getUsername();
   }
 
+  isAuthenticated() {
+    this.keycloakAngular.isLoggedIn().then(
+        value => {
+          this.isLoggedIn = value;
+        });
+  }
 
   login(): void {
 
@@ -23,21 +31,15 @@ export class KeycloakUtilsService {
     //   redirectUri: location.origin
     // };
 
-    this.keycloakAngular.isLoggedIn().then(
-      response => {
-        if ( !response ) {
-            this.keycloakAngular.login();
-        }
-      });
+    if ( !this.isLoggedIn ) {
+      this.keycloakAngular.login();
+    }
   }
 
   logout(): void {
 
-    this.keycloakAngular.isLoggedIn().then(
-        response => {
-          if ( response ) {
-              this.keycloakAngular.logout(location.origin);
-          }
-        });
+    if ( this.isLoggedIn ) {
+      this.keycloakAngular.logout(location.origin);
+    }
   }
 }

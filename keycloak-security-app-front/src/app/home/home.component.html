@@ -1,16 +1,23 @@
-<br/>
-<h1>{{title}}</h1>
-<br/>
-<br/>
-<button (click)="login()">Login</button>
-&nbsp;&nbsp;
-<button (click)="logout()">Logout</button>
-<br/>
-<nav>
-  <a routerLink="/home">Home</a>
-  &nbsp;&nbsp;
-  <a routerLink="/admin">Admin page</a>
-  &nbsp;&nbsp;
-  <a routerLink="/user">User page</a>
-</nav>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+  <a routerLink="/home" mat-button>Home</a>
+  <a routerLink="/admin" mat-button>Admin page</a>
+  <a routerLink="/user" mat-button>User page</a>
+  <div [hidden] = "isAuthenticated()">
+    <button mat-icon-button (click)="login()">
+      <mat-icon>person_outline</mat-icon>
+    </button>
+  </div>
+  <div [hidden] = "!isAuthenticated()">
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+
+

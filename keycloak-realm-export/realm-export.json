@@ -20,8 +20,8 @@
   "actionTokenGeneratedByUserLifespan": 300,
   "enabled": true,
   "sslRequired": "external",
-  "registrationAllowed": false,
-  "registrationEmailAsUsername": false,
+  "registrationAllowed": true,
+  "registrationEmailAsUsername": true,
   "rememberMe": false,
   "verifyEmail": false,
   "loginWithEmailAllowed": true,
@@ -349,6 +349,7 @@
   "groups": [],
   "defaultRoles": [
     "uma_authorization",
+    "USER",
     "offline_access"
   ],
   "requiredCredentials": [
