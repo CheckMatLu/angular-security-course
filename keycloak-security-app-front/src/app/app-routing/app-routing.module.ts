@@ -18,10 +18,6 @@ const appRoutes: Routes = [
       data: { roles: ['USER'] }
     },
     {
-      path: 'home',
-      redirectTo: '/'
-    },
-    {
       path: '**',
       redirectTo: '/'
     }

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
-import { KeycloakLoginOptions } from 'keycloak-js';
 
 @Injectable({
   providedIn: 'root'

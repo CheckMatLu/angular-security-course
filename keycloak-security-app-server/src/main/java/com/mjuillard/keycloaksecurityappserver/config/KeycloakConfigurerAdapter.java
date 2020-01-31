@@ -22,6 +22,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 
 @Configuration
 @EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @ConditionalOnProperty(name = "keycloak.enabled", havingValue = "true", matchIfMissing = true)
 @ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
 public class KeycloakConfigurerAdapter extends KeycloakWebSecurityConfigurerAdapter {
