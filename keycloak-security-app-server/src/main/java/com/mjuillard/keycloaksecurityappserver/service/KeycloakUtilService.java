@@ -11,4 +11,6 @@ public interface KeycloakUtilService {
 	AccessToken getAccessToken();
 	
 	List<UserDto> getAllUsers();
+	
+	String getUserId();
 }

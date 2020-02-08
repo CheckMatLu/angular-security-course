@@ -13,6 +13,7 @@ import { DataService } from '../services/data/data.service';
 export class UserComponent implements OnInit {
 
   carts: any;
+  userProfile;
 
   constructor(private http: HttpClient, protected keycloakUtils: KeycloakUtilsService, protected dataService: DataService) { }
 
@@ -21,9 +22,20 @@ export class UserComponent implements OnInit {
   }
 
   getUserCartsList() {
-    if (this.keycloakUtils.isLoggedIn) {
-      this.dataService.getCustomerCart()
-          .subscribe(data => (this.carts = data));
+
+    if ( this.keycloakUtils.isLoggedIn) {
+      if ( ! this.userProfile ) {
+        this.keycloakUtils.loadUserProfile().success(
+          value => {
+              this.userProfile = value;
+              this.dataService.getCustomerCart( this.userProfile.sub )
+              .subscribe(data => (this.carts = data));
+          }
+        );
+      } else {
+        this.dataService.getCustomerCart( this.userProfile.sub )
+        .subscribe(data => (this.carts = data));
+      }
     }
   }
 }

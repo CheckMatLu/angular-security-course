@@ -48,5 +48,10 @@ public class KeycloakUtilServiceImpl implements KeycloakUtilService{
 
 		return results;
 	}
-	
+
+	@Override
+	public String getUserId() {
+		AccessToken accessToken = this.getAccessToken();
+		return accessToken.getSubject();
+	}
 }

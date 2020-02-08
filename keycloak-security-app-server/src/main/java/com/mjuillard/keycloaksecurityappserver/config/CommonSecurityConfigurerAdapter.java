@@ -24,20 +24,14 @@ public class CommonSecurityConfigurerAdapter extends AbstractHttpConfigurer<Comm
         .and()
             .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
-
                 .antMatchers("/logout", "/").permitAll()
-//                .antMatchers("/user").hasRole("USER")
-//                .antMatchers("/admin").hasRole(ROLE_ADMIN)
-                
-                .antMatchers("/customers/**").hasRole(ROLE_USER)
-                .antMatchers("/users/**").hasRole(ROLE_ADMIN)
-                
                 .antMatchers("/h2-console/**").permitAll()
                 
+                .antMatchers("/customers/**").hasRole(ROLE_USER)
+                .antMatchers("/admin/**").hasRole(ROLE_ADMIN)
+  
                 .anyRequest().denyAll()
-		
                 .and().headers().frameOptions().disable();
-
 	}
 	
 //    @Bean

@@ -22,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { UserItemComponent } from './admin/user-item/user-item.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
+import { ProductComponent } from './product/product.component';
+import { ProductItemComponent } from './product/product-item/product-item.component';
 
 
 const keycloakService = new KeycloakService();
@@ -34,7 +36,9 @@ const keycloakService = new KeycloakService();
     UserComponent,
     HeaderComponent,
     UserItemComponent,
-    CartItemComponent
+    CartItemComponent,
+    ProductComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,

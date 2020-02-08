@@ -10,7 +10,6 @@ import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -28,8 +27,8 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-@ConditionalOnProperty(name = "keycloak.enabled", havingValue = "true", matchIfMissing = true)
+@EnableGlobalMethodSecurity(prePostEnabled=true)
+//@ConditionalOnProperty(name = "keycloak.enabled", havingValue = "true", matchIfMissing = true)
 @ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
 public class KeycloakConfigurerAdapter extends KeycloakWebSecurityConfigurerAdapter {
 		
@@ -46,6 +45,7 @@ public class KeycloakConfigurerAdapter extends KeycloakWebSecurityConfigurerAdap
 	 */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		        
 		KeycloakAuthenticationProvider keycloakAuthenticationProvider = super.keycloakAuthenticationProvider();
 		// simple Authority Mapper to avoid ROLE_
 		keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());

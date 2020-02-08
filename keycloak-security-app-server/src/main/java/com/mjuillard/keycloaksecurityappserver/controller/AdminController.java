@@ -12,13 +12,13 @@ import com.mjuillard.keycloaksecurityappserver.model.dto.UserDto;
 import com.mjuillard.keycloaksecurityappserver.service.KeycloakUtilService;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserController {
+@RequestMapping(value = "/admin")
+public class AdminController {
 
 	@Autowired
 	KeycloakUtilService keycloakService;
 	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UserDto> getAllUsers() {
 		return keycloakService.getAllUsers();
 	}

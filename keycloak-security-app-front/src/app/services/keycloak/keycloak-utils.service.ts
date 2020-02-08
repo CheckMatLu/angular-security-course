@@ -15,6 +15,11 @@ export class KeycloakUtilsService {
     return this.keycloakAngular.getUsername();
   }
 
+  public loadUserProfile() {
+    return this.keycloakAngular.getKeycloakInstance()
+      .loadUserInfo();
+  }
+
   isAuthenticated() {
     this.keycloakAngular.isLoggedIn().then(
         value => {

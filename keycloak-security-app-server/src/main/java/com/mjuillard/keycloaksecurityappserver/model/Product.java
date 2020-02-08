@@ -1,10 +1,12 @@
 package com.mjuillard.keycloaksecurityappserver.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Product implements Serializable{
@@ -16,6 +18,8 @@ public class Product implements Serializable{
 	private Long id;
 	private String name;
 	private int price;
+	@ManyToMany
+	private List<Cart> carts;
 	
 	public Long getId() {
 		return id;
@@ -35,7 +39,10 @@ public class Product implements Serializable{
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-	
-
+	public List<Cart> getCarts() {
+		return carts;
+	}
+	public void setCarts(List<Cart> carts) {
+		this.carts = carts;
+	}
 }
