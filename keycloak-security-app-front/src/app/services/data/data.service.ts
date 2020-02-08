@@ -9,13 +9,23 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getUnsecureData() {
-    return this.http.get(environment.apiUrl + '/', {responseType: 'text'});
+  // getUnsecureData() {
+  //   return this.http.get(environment.apiUrl + '/', {responseType: 'text'});
+  // }
+
+  // getUserData() {
+  //   return this.http.get(environment.apiUrl + '/user', {responseType: 'text'});
+  // }
+
+  // getAdminData() {
+  //   return this.http.get(environment.apiUrl + '/admin', {responseType: 'text'});
+  // }
+
+  getUsersList() {
+    return this.http.get(environment.apiUrl + '/users');
   }
-  getUserData() {
-    return this.http.get(environment.apiUrl + '/user', {responseType: 'text'});
-  }
-  getAdminData() {
-    return this.http.get(environment.apiUrl + '/admin', {responseType: 'text'});
+
+  getCustomerCart() {
+    return this.http.get(environment.apiUrl + '/customers/carts');
   }
 }

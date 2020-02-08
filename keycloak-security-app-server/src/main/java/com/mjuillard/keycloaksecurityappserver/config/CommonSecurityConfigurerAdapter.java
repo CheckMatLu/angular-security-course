@@ -7,6 +7,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 
 public class CommonSecurityConfigurerAdapter extends AbstractHttpConfigurer<CommonSecurityConfigurerAdapter, HttpSecurity> {
 
+	private final static String ROLE_ADMIN = "ADMIN";
+	private final static String ROLE_USER = "USER";
+	
 	@Override
 	public void init(HttpSecurity http) throws Exception {
 
@@ -22,11 +25,12 @@ public class CommonSecurityConfigurerAdapter extends AbstractHttpConfigurer<Comm
             .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
 
-                .antMatchers("/logout", "/", "/unsecured").permitAll()
-                .antMatchers("/user").hasRole("USER")
-                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/logout", "/").permitAll()
+//                .antMatchers("/user").hasRole("USER")
+//                .antMatchers("/admin").hasRole(ROLE_ADMIN)
                 
-                .antMatchers("/customers/**").hasRole("USER")
+                .antMatchers("/customers/**").hasRole(ROLE_USER)
+                .antMatchers("/users/**").hasRole(ROLE_ADMIN)
                 
                 .antMatchers("/h2-console/**").permitAll()
                 

@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+
+  <span>{{title}}</span>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" >
+    <a routerLink="/home" mat-button>Home page</a>
+  </div>
+  <span *ngIf="hasAdminRole()">
+    <a routerLink="/admin" mat-button>Admin page</a>
+  </span>
+  <span *ngIf="hasUserRole()">
+    <a routerLink="/user" mat-button>User page</a>
+  </span>
+
+  <span class="spacer"></span>
+
+  <div *ngIf="!isAuthenticated()">
+    <button mat-icon-button (click)="login()" matTooltip="Log in" matTooltipPosition="above">
+      <mat-icon>person_outline</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="isAuthenticated()">
+    <button mat-icon-button (click)="logout()" matTooltip="Log out" matTooltipPosition="above">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

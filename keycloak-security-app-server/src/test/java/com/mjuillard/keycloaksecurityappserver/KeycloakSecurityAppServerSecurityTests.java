@@ -2,23 +2,29 @@ package com.mjuillard.keycloaksecurityappserver;
 
 
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Import;
-import org.springframework.core.annotation.Order;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mjuillard.keycloaksecurityappserver.config.CommonSecurityConfigurerAdapter;
-import com.mjuillard.keycloaksecurityappserver.controller.KeycloakSecurityAppController;
+
+//@Import({SecurityTestConfiguration.class, KeycloakConfiguration.class})
+//@ContextConfiguration(classes = {SecurityTestConfiguration.class})
+//@EnableAutoConfiguration(exclude = { KeycloakConfigurerAdapter.class, CommonSecurityConfigurerAdapter.class, WebMvcConfigurer.class} )
+
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+//@Import({SecurityTestConfiguration.class})
 
 @RunWith(SpringRunner.class)
-@Import(SecurityTestConfiguration.class)
-@WebMvcTest(value = KeycloakSecurityAppController.class)
+@Import({SecurityTestConfiguration.class})
+//@WebMvcTest(value = KeycloakSecurityAppController.class)
 public class KeycloakSecurityAppServerSecurityTests {
-
+	
 //    @Autowired
 //    MockMvc mockMvc;
 //    
@@ -54,8 +60,8 @@ public class KeycloakSecurityAppServerSecurityTests {
 
 @TestConfiguration
 @EnableWebSecurity
-@Order(1000)
- class SecurityTestConfiguration extends WebSecurityConfigurerAdapter {
+@Profile("test")
+class SecurityTestConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // use the common configuration to validate matchers

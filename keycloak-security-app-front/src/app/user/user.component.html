@@ -1,8 +1,15 @@
 <p>You are in the user's zone</p>
 
 <p>
-Here is your cart:
+Here is your carts:
 </p>
-<ul *ngFor="let cart of carts">
-  <li>{{cart.name}}</li>
-</ul>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="left">
+  <div fxFlex="20%">
+    <app-cart-item
+      *ngFor="let cart of carts"
+      [cart]="cart">
+    </app-cart-item>
+  </div>
+</div>
+

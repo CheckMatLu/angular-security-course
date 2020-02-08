@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { KeycloakUtilsService } from '../services/keycloak/keycloak-utils.service';
 import { map } from 'rxjs/operators';
+import { DataService } from '../services/data/data.service';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,7 @@ export class UserComponent implements OnInit {
 
   carts: any;
 
-  constructor(private http: HttpClient, protected keycloakUtils: KeycloakUtilsService) { }
+  constructor(private http: HttpClient, protected keycloakUtils: KeycloakUtilsService, protected dataService: DataService) { }
 
   ngOnInit() {
     this.getUserCartsList();
@@ -21,10 +22,8 @@ export class UserComponent implements OnInit {
 
   getUserCartsList() {
     if (this.keycloakUtils.isLoggedIn) {
-      this.http.get(environment.apiUrl + '/customers/carts')
+      this.dataService.getCustomerCart()
           .subscribe(data => (this.carts = data));
-        //.pipe( map( data => this.carts = data ) );
-        //.subscribe(data => this.carts = data);
     }
   }
 }

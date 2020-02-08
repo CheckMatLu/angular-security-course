@@ -9,25 +9,8 @@ import { KeycloakUtilsService } from '../services/keycloak/keycloak-utils.servic
 })
 export class HomeComponent implements OnInit {
 
-  title = 'Keycloack demo test page ';
-  adminGreetings;
+  constructor() { }
 
-  constructor(private http: HttpClient, protected keycloakUtils: KeycloakUtilsService) { }
-
-  ngOnInit() {
-    this.keycloakUtils.isAuthenticated();
-  }
-
-  login() {
-    this.keycloakUtils.login();
-  }
-
-  logout() {
-    this.keycloakUtils.logout();
-  }
-
-  isAuthenticated(): boolean {
-    return this.keycloakUtils.isLoggedIn;
-  }
+  ngOnInit() { }
 
 }

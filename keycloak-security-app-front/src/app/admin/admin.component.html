@@ -1,4 +1,15 @@
-<p>You are in the admin zone</p>
-<button (click)="getAdminGreetings()">Your greetings</button>
-<p>{{adminGreetings}}</p>
-<p>Welcome {{userName}}</p>
+<p>Welcome {{currentUserName}}, you must be admin as you are here</p>
+
+<p>
+  List of application users:
+</p>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="left">
+  <div fxFlex="20%">
+    <app-user-item
+      *ngFor="let user of users"
+      [user]=user>
+    </app-user-item>
+  </div>
+</div>
+

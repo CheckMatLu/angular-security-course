@@ -14,7 +14,7 @@ import com.mjuillard.keycloaksecurityappserver.service.CartService;
 import com.mjuillard.keycloaksecurityappserver.service.KeycloakUtilService;
 
 @RestController
-@RequestMapping(value = "/customers", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/customers")
 public class CartController {
 
 	@Autowired

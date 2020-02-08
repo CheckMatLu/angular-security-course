@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef, DoBootstrap } from '@angular/core';
-import { MatCardModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSidenavModule } from '@angular/material';
+import { MatCardModule
+        , MatIconModule
+        , MatToolbarModule
+        , MatButtonModule
+        , MatFormFieldModule
+        , MatInputModule
+        , MatSidenavModule
+        , MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
@@ -12,6 +19,9 @@ import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './header/header.component';
+import { UserItemComponent } from './admin/user-item/user-item.component';
+import { CartItemComponent } from './user/cart-item/cart-item.component';
 
 
 const keycloakService = new KeycloakService();
@@ -21,7 +31,10 @@ const keycloakService = new KeycloakService();
     AppComponent,
     HomeComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    HeaderComponent,
+    UserItemComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +50,8 @@ const keycloakService = new KeycloakService();
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTooltipModule
   ],
   providers: [
     {

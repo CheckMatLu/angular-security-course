@@ -22,6 +22,11 @@ export class KeycloakUtilsService {
         });
   }
 
+  hasRole(role: string){
+    const roles: string[] = this.keycloakAngular.getUserRoles();
+    return roles.indexOf(role) > -1;
+  }
+
   login(): void {
 
     // const keycloakLoginOptions: KeycloakLoginOptions = {

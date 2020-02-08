@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakUtilsService } from '../services/keycloak/keycloak-utils.service';
 import { DataService } from '../services/data/data.service';
+import { UserItem } from './user-item/user-item.model';
 
 @Component({
   selector: 'app-admin',
@@ -11,8 +12,8 @@ import { DataService } from '../services/data/data.service';
 })
 export class AdminComponent implements OnInit {
 
-  adminGreetings;
-  userName;
+  currentUserName: string;
+  users: any;
 
   constructor(private http: HttpClient,
               protected keycloakAngular: KeycloakService,
@@ -20,10 +21,11 @@ export class AdminComponent implements OnInit {
               protected dataService: DataService) { }
 
   ngOnInit() {
+    this.currentUserName = this.keycloakUtils.getUserName();
+    this.getAllUsers();
   }
 
-  getAdminGreetings() {
-    this.dataService.getAdminData().subscribe(data => this.adminGreetings = data);
-    this.userName = this.keycloakUtils.getUserName();
+  getAllUsers() {
+    this.dataService.getUsersList().subscribe(users => this.users = users);
   }
 }

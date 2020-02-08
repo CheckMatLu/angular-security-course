@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppAuthGuard } from '../app.authguard';
 import { AdminComponent } from '../admin/admin.component';
 import { UserComponent } from '../user/user.component';
+import { HomeComponent } from '../home/home.component';
 
 const appRoutes: Routes = [
   {
@@ -16,6 +17,10 @@ const appRoutes: Routes = [
       component: UserComponent,
       canActivate: [AppAuthGuard],
       data: { roles: ['USER'] }
+    },
+    {
+      path: 'home',
+      component: HomeComponent
     },
     {
       path: '**',
