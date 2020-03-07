@@ -7,7 +7,9 @@ import { MatCardModule
         , MatFormFieldModule
         , MatInputModule
         , MatSidenavModule
-        , MatTooltipModule } from '@angular/material';
+        , MatTooltipModule
+        , MatListModule
+        , MatCheckboxModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
@@ -20,10 +22,12 @@ import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
-import { UserItemComponent } from './admin/user-item/user-item.component';
-import { CartItemComponent } from './user/cart-item/cart-item.component';
 import { ProductComponent } from './product/product.component';
 import { ProductItemComponent } from './product/product-item/product-item.component';
+import { CartDetailComponent } from './carts/cart-detail/cart-detail.component';
+import { CartsComponent } from './carts/carts/carts.component';
+import { CartItemComponent } from './carts/cart-item/cart-item.component';
+import { UserItemComponent } from './user/user-item/user-item.component';
 
 
 const keycloakService = new KeycloakService();
@@ -38,7 +42,9 @@ const keycloakService = new KeycloakService();
     UserItemComponent,
     CartItemComponent,
     ProductComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    CartDetailComponent,
+    CartsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,9 @@ const keycloakService = new KeycloakService();
     MatInputModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatListModule,
+    MatCheckboxModule
   ],
   providers: [
     {

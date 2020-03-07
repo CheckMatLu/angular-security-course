@@ -1,0 +1,18 @@
+
+ <div fxLayout="row">
+
+    <div class="container" fxLayout="column" fxLayoutAlign="left">
+      <div fxFlex="40%">
+        <div *ngFor="let cart of carts; let i = index">
+          <app-cart-item
+            [cart]="cart"
+            [userId]="userId">
+          </app-cart-item>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="60%">
+      <router-outlet></router-outlet>
+    </div>
+
+</div>

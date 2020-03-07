@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../services/data/data.service';
+import { Cart } from '../carts/cart.model';
+import { Product } from './product.model';
+import { KeycloakUtilsService } from '../services/keycloak/keycloak-utils.service';
 
 @Component({
   selector: 'app-product',
@@ -8,9 +11,10 @@ import { DataService } from '../services/data/data.service';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(protected dataService: DataService) { }
+  products: Product[];
+
+  constructor(protected keycloakUtils: KeycloakUtilsService, protected dataService: DataService) { }
 
   ngOnInit() {
   }
-
 }

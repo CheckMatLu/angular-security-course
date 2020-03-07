@@ -1,6 +1,7 @@
 package com.mjuillard.keycloaksecurityappserver.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -29,6 +30,13 @@ public class CustomerController {
 	public List<Cart> getCarts(@PathVariable("id") String id){
 
 		return cartService.getCustomerCarts(id);
+	}
+	
+	@GetMapping(value = "/{userId}/carts/{cartId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("#userId == principal.name")
+	public Optional<Cart> getCart(@PathVariable("userId") String userId, @PathVariable("cartId") Long cartId){
+
+		return cartService.getCart(cartId);
 	}
 	
 	@GetMapping(value = "/{userId}/carts/{cartId}/products", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { KeycloakUtilsService } from '../services/keycloak/keycloak-utils.service';
 import { map } from 'rxjs/operators';
 import { DataService } from '../services/data/data.service';
+import { Cart } from '../carts/cart.model';
 
 @Component({
   selector: 'app-user',
@@ -12,30 +13,27 @@ import { DataService } from '../services/data/data.service';
 })
 export class UserComponent implements OnInit {
 
-  carts: any;
+  userLoaded: Promise<boolean>;
   userProfile;
 
-  constructor(private http: HttpClient, protected keycloakUtils: KeycloakUtilsService, protected dataService: DataService) { }
+  constructor(private http: HttpClient, protected keycloakUtils: KeycloakUtilsService) { }
 
   ngOnInit() {
-    this.getUserCartsList();
+    this.loadUser();
   }
 
-  getUserCartsList() {
+  loadUser() {
 
     if ( this.keycloakUtils.isLoggedIn) {
       if ( ! this.userProfile ) {
         this.keycloakUtils.loadUserProfile().success(
           value => {
               this.userProfile = value;
-              this.dataService.getCustomerCart( this.userProfile.sub )
-              .subscribe(data => (this.carts = data));
+              this.userLoaded = Promise.resolve(true);
           }
         );
-      } else {
-        this.dataService.getCustomerCart( this.userProfile.sub )
-        .subscribe(data => (this.carts = data));
       }
     }
+
   }
 }

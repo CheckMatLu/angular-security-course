@@ -1,1 +1,8 @@
-<p>product works!</p>
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="left">
+  <div fxFlex="20%">
+    <app-product-item
+      *ngFor="let product of products"
+      [product]="product">
+    </app-product-item>
+  </div>
+</div>

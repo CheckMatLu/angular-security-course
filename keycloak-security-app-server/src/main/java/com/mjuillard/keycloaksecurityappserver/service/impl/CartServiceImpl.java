@@ -1,6 +1,7 @@
 package com.mjuillard.keycloaksecurityappserver.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,13 @@ public class CartServiceImpl implements CartService{
 	}
 	
 	@Override
+	public Optional<Cart> getCart(Long cartId) {
+		return cartRepository.findById(cartId);
+	}
+	
+	@Override
 	public List<Product> getProducts(final Long cartId){
 		return productRepository.findByCarts_Id(cartId);
 	}
+	
 }

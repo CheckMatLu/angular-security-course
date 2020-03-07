@@ -2,7 +2,7 @@
 
 Little project to put Keycloak security server in application
 - Keycloak server in standalone using the realm exported in "keycloak-realm-export"
-- Back in SPring boot using  keycloak-spring-boot-starter
+- Back in Spring boot using  keycloak-spring-boot-starter
 - Front in angular + angular material.
   (need to install:
     npm install --save keycloak-js@latest

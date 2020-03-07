@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakUtilsService } from '../services/keycloak/keycloak-utils.service';
 import { DataService } from '../services/data/data.service';
-import { UserItem } from './user-item/user-item.model';
 
 @Component({
   selector: 'app-admin',

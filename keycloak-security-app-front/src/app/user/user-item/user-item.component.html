@@ -1,0 +1,31 @@
+<mat-card class="userItemCard">
+  <mat-card-header>
+    <mat-card-title>{{user.userName}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list dense>
+      <mat-list-item>
+        <h4 mat-line>First Name</h4>
+        <p mat-line>{{user.firstName}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h4 mat-line>Last Name</h4>
+        <p mat-line>{{user.lastName}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h4 mat-line>Email</h4>
+        <p mat-line>{{user.email}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h4 mat-line>
+          <div>
+            <mat-checkbox checked="user.enabled" disabled="true">Enabled</mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox checked="user.emailVerified" disabled="true">Email verified</mat-checkbox>
+          </div>
+        </h4>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

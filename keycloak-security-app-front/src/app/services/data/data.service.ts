@@ -13,11 +13,11 @@ export class DataService {
     return this.http.get(environment.apiUrl + '/admin/users');
   }
 
-  getCustomerCart( userId: string ) {
+  getCustomerCarts( userId: string ) {
     return this.http.get(environment.apiUrl + '/customers/' + userId + '/carts');
   }
 
-  getProducts( userId: string, cartId: number ) {
+  getCart( userId: string, cartId: number ) {
     return this.http.get(environment.apiUrl + '/customers/' + userId + '/carts/' + cartId);
   }
 }

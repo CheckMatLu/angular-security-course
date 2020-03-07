@@ -1,15 +1,19 @@
-<p>You are in the user's zone</p>
+<div fxLayout="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
 
-<p>
-Here is your carts:
-</p>
+  <div>
+    <p>You are in the user's zone</p>
+  </div>
 
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="left">
-  <div fxFlex="20%">
-    <app-cart-item
-      *ngFor="let cart of carts"
-      [cart]="cart">
-    </app-cart-item>
+  <div>
+    <p>
+    Here is your carts:
+    </p>
+  </div>
+
+  <div *ngIf="this.userLoaded | async">
+    <app-carts [userId]="this.userProfile.sub"></app-carts>
   </div>
 </div>
+
+
 
